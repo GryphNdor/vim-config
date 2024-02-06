@@ -14,6 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", opts)
-require('options') 
-require('keymaps') 
-require('Comment').setup()
+require("options") 
+require("keymaps") 
+require("Comment").setup()
+require("lsp")

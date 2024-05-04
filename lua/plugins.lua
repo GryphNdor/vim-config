@@ -1,32 +1,52 @@
 return {
+    -- Tmux stuff
     {
-      'christoomey/vim-tmux-navigator',
-      lazy = false
+        'christoomey/vim-tmux-navigator',
+        lazy = false
+    },
+
+    -- Theme
+    {
+        "ellisonleao/gruvbox.nvim", 
+        priority = 1000 , config = true
     },
     {
-        "luisiacc/gruvbox-baby",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-            -- load the colorscheme here
-            vim.g.gruvbox_baby_telescope_theme = 1
-            vim.cmd([[colorscheme gruvbox-baby]])
-        end,
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
+
+    -- Fuzzy Finder
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
+
+    -- Commenting
     {
         'numToStr/Comment.nvim',
         lazy = false,
     },
+
+    -- Folke Stuff
     "folke/neodev.nvim",
     "folke/which-key.nvim",
-    { "folke/neoconf.nvim", cmd = "Neoconf" },
-    {"nvim-treesitter/nvim-treesitter"},
+    { 
+        "folke/neoconf.nvim", 
+        cmd = "Neoconf" 
+    },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
 
-    --- Uncomment the two plugins below if you want to manage the language servers from neovim
+    -- TS
+    { "nvim-treesitter/nvim-treesitter" },
+
+    -- LSP
     {'williamboman/mason.nvim'},
     {'williamboman/mason-lspconfig.nvim'},
 
@@ -35,4 +55,8 @@ return {
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'L3MON4D3/LuaSnip'},
+
+    -- Git
+    {'tpope/vim-fugitive'},
+
 }

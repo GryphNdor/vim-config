@@ -14,6 +14,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", opts)
+require 'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true, -- enable syntax highlighting
+    }
+}
 require("options") 
 require("keymaps") 
 require("Comment").setup()

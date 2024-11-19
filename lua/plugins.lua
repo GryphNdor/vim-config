@@ -4,8 +4,6 @@ return {
         'christoomey/vim-tmux-navigator',
         lazy = false
     },
-
-    -- Theme
     {
         "ellisonleao/gruvbox.nvim", 
         priority = 1000 , config = true
@@ -44,7 +42,16 @@ return {
     },
 
     -- TS
-    { "nvim-treesitter/nvim-treesitter" },
+    { 
+        "nvim-treesitter/nvim-treesitter",
+        lazy = false,
+        build = ":TSUpdate",
+        opts = {
+            highlight = {
+                enable = true
+            }
+        },
+    },
 
     -- LSP
     {'williamboman/mason.nvim'},
@@ -55,6 +62,9 @@ return {
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'L3MON4D3/LuaSnip'},
+
+    -- AutoClosing
+    {'jiangmiao/auto-pairs'},
 
     -- Git
     {'tpope/vim-fugitive'},

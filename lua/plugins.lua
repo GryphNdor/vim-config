@@ -14,9 +14,12 @@ return {
     },
 
     -- Fuzzy Finder
-    {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+    { 
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        -- or if using mini.icons/mini.nvim dependencies = { "echasnovski/mini.icons" },
+        opts = {}
     },
 
     -- Commenting
@@ -35,6 +38,8 @@ return {
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        cmd = "Trouble",
+        opts = {}
     },
     {
         "folke/todo-comments.nvim",
@@ -63,10 +68,21 @@ return {
     {'hrsh7th/nvim-cmp'},
     {'L3MON4D3/LuaSnip'},
 
+    -- Formatter
+    { 'stevearc/conform.nvim', opts = {}, },
+
     -- AutoClosing
     {'jiangmiao/auto-pairs'},
 
     -- Git
     {'tpope/vim-fugitive'},
+
+    -- DAP,
+    {'mfussenegger/nvim-dap'},
+    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
+    {
+        "Cliffback/netcoredbg-macOS-arm64.nvim",
+        dependencies = { "mfussenegger/nvim-dap" }
+    }
 
 }

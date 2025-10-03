@@ -10,8 +10,12 @@ end)
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {},
+  ensure_installed = {'csharp_ls'},
   handlers = {
     lsp_zero.default_setup,
-  },
+    csharp_ls = function()
+        require'lspconfig'.csharp_ls.setup({})
+        require("csharpls_extended").buf_read_cmd_bind()
+    end
+},
 })

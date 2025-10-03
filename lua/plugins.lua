@@ -44,6 +44,14 @@ return {
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            keywords = {
+                HUH = {
+                    icon = "? ",
+                    color = "info"
+                }
+            }
+        }
     },
 
     -- TS
@@ -67,12 +75,18 @@ return {
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'L3MON4D3/LuaSnip'},
+    {'Decodetalkers/csharpls-extended-lsp.nvim'},
 
     -- Formatter
     { 'stevearc/conform.nvim', opts = {}, },
 
     -- AutoClosing
-    {'jiangmiao/auto-pairs'},
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true,
+        opts = {}
+    },
 
     -- Git
     {'tpope/vim-fugitive'},
@@ -83,6 +97,17 @@ return {
     {
         "Cliffback/netcoredbg-macOS-arm64.nvim",
         dependencies = { "mfussenegger/nvim-dap" }
+    },
+    -- file navigation
+    {
+      'stevearc/oil.nvim',
+      ---@module 'oil'
+      ---@type oil.SetupOpts
+      opts = {},
+      -- Optional dependencies
+      dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+      -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+      lazy = false,
     }
 
 }

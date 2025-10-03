@@ -13,6 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 require("lazy").setup("plugins", opts)
 require 'nvim-treesitter.configs'.setup {
     highlight = {
@@ -114,19 +115,6 @@ vim.g.dotnet_get_dll_path = function()
 end
 
 local config = {
-  {
-    type = "coreclr",
-    name = "launch - netcoredbg",
-    request = "launch",
-    program = function()
-        if vim.fn.confirm('Should I recompile first?', '&yes\n&no', 2) == 1 then
-            vim.g.dotnet_build_project()
-        end
-        return vim.g.dotnet_get_dll_path()
-    end,
-    stopAtEntry = false,
-    cwd = vim.fn.getcwd,
-  },
 }
 
 local dap = require("dap")
@@ -162,11 +150,6 @@ require("conform").setup({
     dotnetCsharpier = { command = "/Users/E124664/.dotnet/tools/dotnet-csharpier" },
     args = {"--write-stdout"},
     stdin = true,
-  },
-  format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
-    lsp_format = "fallback",
   },
 })
 
